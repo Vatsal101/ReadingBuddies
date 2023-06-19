@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+{% block title %} Searching {% endblock %}
+
+{% block content %}
+
+<link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'>
+
+
+<style>
+    body {
+        background-color: #1f272b;
+        font-family: 'Nunito'
+    }
+    h1   {
+        color: #4766f9;
+        font-size: 50px;
+        position: relative; 
+        text-align: center;
+        top: 60px;
+    }
+    h2{
+        color: rgb(194, 103, 103);;
+    }
+
+    p    {
+        font-size: 20px;
+        
+        color: rgb(194, 103, 103);
+    }
+
+    .jumbotron{
+        font-family: 'Nunito';
+        background-color: #2c363b;;
+        border-radius: 50px;
+        margin: auto;
+        margin-top: 100px;
+        width: 90%;
+        padding: 100px;
+        text-align: center;
+    }
+
+    button{
+        background-color: #5b73ee;   
+        width: 30%;  
+        color: #ffffff;
+        padding: 10px;
+        margin: 5px;
+        border: none;   
+        cursor: pointer;
+        border-radius: 13px;
+        
+    }  
+    p {
+        color: #ffffff;
+        size: 17px;
+    }
+    .mainmessage{
+        display: inline-block;
+        width: 450px;
+        padding: 10px;
+        margin-left: 7.5%;
+    }
+    label{
+        color: #5b73ee;
+        font-size: 20px;
+    }
+</style>
+
+<center> <h1 class="display-3" style="color: #dfe7ef;"> Lets Find Some Books! </h1></center>
+
+<div class="jumbotron">
+    <h2 class="font-weight-bolder" style="font-size: 45px; padding-bottom: 7%;"> Find Some Books Here!</h2>
+    <p style="padding: 15px;">To find some interesting books check off some genres of books and our algorithm with provide you with some books for each genre you have selected! The books we recommend are the one of the most read/liked books in their respective categories so please trust our decisions!</p>
+
+
+
+    <form method="POST">
+        <div class="row">
+            <div class="col-sm">
+
+                <input type="checkbox" id="box1" name="box1" value="Art">
+                <label for="box1"> Art</label><br>
+                <input type="checkbox" id="box2" name="box2" value="Biography">
+                <label for="box2"> Biographies</label><br>
+                <input type="checkbox" id="box3" name="box3" value="Children's">
+                <label for="box3"> Children's </label><br>
+                <input type="checkbox" id="box4" name="box4" value="Classic">
+                <label for="box4"> Classics</label><br>
+                <input type="checkbox" id="box5" name="box5" value="Comics">
+                <label for="box5"> Comics </label><br>
+
+            </div>
+
+            <div class="col-sm">
+
+                    <input type="checkbox" id="box6" name="box6" value="Fantasy">
+                    <label for="box6"> Fantasy </label><br>
+                    <input type="checkbox" id="box7" name="box7" value="Fiction">
+                    <label for="box7"> Fiction</label><br>
+                    <input type="checkbox" id="box8" name="box8" value="Historical Fiction">
+                    <label for="box8"> Historical Fiction</label><br>
+                    <input type="checkbox" id="box9" name="box9" value="Horror">
+                    <label for="box9"> Horror </label><br>
+                    <input type="checkbox" id="box10" name="box10" value="Mystery">
+                    <label for="box10"> Mystery </label><br>
+            </div>
+
+            <div class="col-sm">
+                <input type="checkbox" id="box11" name="box11" value="Nonfiction">
+                <label for="box11"> Nonfiction </label><br>
+                <input type="checkbox" id="box12" name="box12" value="Romance">
+                <label for="box12"> Romance </label><br>
+        
+                <input type="checkbox" id="box13" name="box13" value="Science">
+                <label for="box13"> Science </label><br>
+                <input type="checkbox" id="box14" name="box14" value="Thriller">
+                <label for="box14"> Thriller </label><br>
+                <input type="checkbox" id="box15" name="box15" value="Young Adult">
+                <label for="box15"> Young Adult </label><br>
+            </div>
+        </div>
+        <button style="font-size: 15px; margin-top: 15px;" type="submit"> Lets Find Some Books! </button>
+    </form>
+
+
+</div>
+
+
+
+{% endblock %}
