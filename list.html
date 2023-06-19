@@ -1,0 +1,214 @@
+{% extends "base.html" %}
+{% block title %} MyBookList {% endblock %}
+
+{% block content %}
+
+<link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'>
+
+
+<style>
+    body {
+        background-color: #1f272b;
+        font-family: 'Nunito';
+        margin: 0
+    }
+    h1   {
+        color: #4766f9;
+        font-size: 50px;
+        position: relative; 
+        text-align: top;
+        top: 60px;
+        padding-bottom: 7%
+    }
+    h2{
+        color: rgb(194, 103, 103);;
+    }
+
+    p    {
+        font-size: 20px;
+        
+        color: rgb(194, 103, 103);
+    }
+
+    .jumbotron{
+        font-family: 'Nunito';
+        background-color: #2c363b;;
+        border-radius: 50px;
+        margin: auto;
+        margin-top: 100px;
+        text-align: center;
+    }
+
+    button{
+        background-color: #5b73ee;   
+        width: 30%;  
+        color: #ffffff;
+        padding: 10px;
+        margin: 5px;
+        border: none;   
+        cursor: pointer;
+        border-radius: 13px;
+        
+    }  
+    p {
+        color: #ffffff;
+        size: 17px;
+    }
+    .mainmessage{
+        display: inline-block;
+        width: 450px;
+        padding: 10px;
+        margin-left: 7.5%;
+    }
+
+    .row{
+        display: flex;
+        justify-content: space-between;
+        margin: 5rem auto 0 auto;
+        padding : 7%;
+    }
+</style>
+
+<center> <h1 class="display-3" style="color: #dfe7ef;"> {{ name }}'s BookList </h1></center>
+
+
+<div class="jumbotron">
+    <h2 class="font-weight-bold" style="font-size: 45px; position: relative; padding: 10px;bottom: 40px;" text-align="center" >Reading/Waiting to be Read</h2>
+    <center> <p style="width: 75%;"> This is list of books which you selected to read in the future. You can keep track of what books you want to read and when you are done reading you can use the check boxes and submit them to change them to finished Reading! </p></center>
+    {% set counter = namespace(c = 0) %}
+
+    {% for book in user.books %}
+
+    {% if book.b_read == False %}
+
+<form method="POST">
+
+    <div class="row">
+        <div class="col-sm" style="width: auto;">
+
+            {% if counter.c % 2 == 0 %}
+            <img src= "{{book.b_img_src}}" alt="{{book.b_title}}" style="width: 35%; height : auto; float: right;">
+
+            <div style="position: relative; top:75px">
+            <p style = "font-size: 25px; color: #4766f9;">
+                "{{ book.b_title }}"
+            </p>
+
+            <p style = "color: #64c1fb;">
+                by {{ book.b_author }} and {{counter.c}}
+            </p>
+
+            <input type="checkbox" id="{{'check'+ counter.c|string}}" name="{{'check'+ counter.c|string}}"  style="font-size: 15px; width: auto;" value="{{book.b_title}}">
+            <label for="{{'check'+ counter.c|string}}" style="color: white; font-size: larger;">Finished Reading?</label>
+             </div>
+
+            {% else%}
+
+            <img src= "{{book.b_img_src}}" alt="{{book.b_title}}" style="width: 35%; height : auto; float: left;">
+
+            <div style="position: relative; top:75px">
+            <p style = "font-size: 25px; color: #4766f9;">
+                "{{ book.b_title }}"
+            </p>
+
+            <p style = "color: #64c1fb">
+                by {{ book.b_author }} and {{counter.c}}
+            </p>
+
+            <input type="checkbox" id="{{'check'+ counter.c|string}}" name="{{'check'+ counter.c|string}}"  style="font-size: 15px; width: auto;" value="{{book.b_title}}">
+            <label for="{{'check'+ counter.c|string}}" style="color: white; font-size: larger;">Finished Reading?</label>
+
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+    {% set counter.c = counter.c + 1 %}
+    {% endfor %}
+
+    <center> <button style="font-size: 30px; width: auto;" type="submit">Done Reading?</button> </center>
+
+    </form>
+</div>
+
+<br>
+<br>
+<br>
+
+<div class="jumbotron">
+    <h2 class="font-weight-bold" style="font-size: 45px; position: relative; padding: 10px;bottom: 40px;" text-align="center" >Finished Books!</h2>
+    <center> <p style="width: 75%;"> This is list of books which you have already read! </p></center>
+    {% set t = namespace(c = 0) %}
+
+
+    {% for book in user.books %}
+
+
+    {% if book.b_read != False %}
+
+
+    <div class="row">
+        <div class="col-sm" style="width: auto;">
+
+            {% if t.c % 2 == 0 %}
+            <img src= "{{book.b_img_src}}" alt="{{book.b_title}}" style="width: 35%; height : auto; float: right;">
+
+            <div style="position: relative; top:75px">
+            <p style = "font-size: 25px; color: #4766f9;">
+                "{{ book.b_title }}"
+            </p>
+
+            <p style = "color: #64c1fb;">
+                by {{ book.b_author }} and {{t.c}}
+            </p>
+
+             </div>
+
+            {% else%}
+
+            <img src= "{{book.b_img_src}}" alt="{{book.b_title}}" style="width: 35%; height : auto; float: left;">
+
+            <div style="position: relative; top:75px">
+            <p style = "font-size: 25px; color: #4766f9;">
+                "{{ book.b_title }}"
+            </p>
+
+            <p style = "color: #64c1fb">
+                by {{ book.b_author }} and {{t.c}}
+            </p>
+
+
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    {% set t.c = t.c + 1 %}
+
+    {% endif %}
+
+    {% endfor %}
+
+    {% if t.c == 0%}
+    <h1 style="color: #4766f9;">Uh Oh! Looks you have not Finished any Books!</h1>
+    {% endif %}
+    
+
+</div>
+
+
+
+
+<!-- <ul class="list-group list-group-flush" id="books">
+
+    {% for book in user.books %}
+        
+        <li class="list-group-item">{{book.b_title}} by {{book.b_author}} </li>
+    {% endfor %}
+
+
+</ul> -->
+
+<br>
+<br>
+{% endblock %}

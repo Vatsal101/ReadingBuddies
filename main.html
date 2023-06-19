@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+{% block title %} Home {% endblock %}
+
+{% block content %}
+
+<link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'>
+
+
+<style>
+    body {
+        background-color: #1f272b;
+        font-family: 'Nunito'
+    }
+    h1   {
+        color: #4766f9;
+        font-size: 50px;
+        position: relative; 
+        text-align: center;
+        top: 60px;
+    }
+    h2{
+        color: rgb(194, 103, 103);;
+    }
+
+    p    {
+        font-size: 20px;
+        
+        color: rgb(194, 103, 103);
+    }
+
+    .jumbotron{
+        font-family: 'Nunito';
+        background-color: #2c363b;;
+        border-radius: 50px;
+        margin: auto;
+        margin-top: 100px;
+        width: 90%;
+        padding: 100px;
+        text-align: center;
+    }
+
+    button{
+        background-color: #5b73ee;   
+        width: 30%;  
+        color: #ffffff;
+        padding: 10px;
+        margin: 5px;
+        border: none;   
+        cursor: pointer;
+        border-radius: 13px;
+        
+    }  
+    p {
+        color: #ffffff;
+        size: 17px;
+    }
+    .mainmessage{
+        display: inline-block;
+        width: 450px;
+        padding: 10px;
+        margin-left: 7.5%;
+    }
+          
+</style>
+
+
+
+<center> <h1 class="display-3" style="color: #dfe7ef;"> Welcome to Reading Buddies </h1></center>
+
+
+<form method="POST">
+<div class="jumbotron">
+    <h2 class="font-weight-bold" style="font-size: 45px; position: relative; padding: 10px;bottom: 40px;" text-align="center" >Here are some current Trending Books</h2>
+    <div class="row">
+        <div class="col-sm">
+            <img src= "{{trending_urls[0]}}"alt="{{trending_books[0]}}" style="width:120px; height:auto; padding: 10%;" >
+            <p style = "font-size: 25px; color: #4766f9;">
+                "{% print(trending_books[0])%}"
+            </p>
+            <p style = "color: #64c1fb;" >
+                by {% print(trending_authors[0]) %}
+            </p>
+            <input type="checkbox" id="book0" name="book0" style="font-size: 15px; width: auto;" value="{{trending_books[0]+ '+' + trending_urls[0]+ '+' + trending_authors[0]}}">
+            <label for="book0" style="color: white; font-size: larger;">Add This book?</label>        
+        </div>
+        <div class="col-sm">
+            <img src= "{{trending_urls[1]}}"alt="{{trending_books[1]}}" style="width:120px; height:auto; padding: 10%;" >
+            <p style = "font-size: 25px; color: #4766f9;">
+                "{% print(trending_books[1]) %}"
+            </p>
+            <p  style = "color: #64c1fb;" >
+                by {% print(trending_authors[1]) %}
+            </p>
+            <input type="checkbox" id="book1" name="book1" style="font-size: 15px; width: auto;" value="{{ trending_books[1]+ '+' + trending_urls[1]+ '+' + trending_authors[1] }}">
+            <label for="book1" style="color: white; font-size: larger;">Add This book?</label>     
+        </div>
+        <div class="col-sm">
+            <img src= "{{trending_urls[2]}}"alt="{{trending_books[2]}}" style="width:120px; height:auto; padding: 10%;" >
+            <p style = "font-size: 25px; color: #4766f9;">
+                "{% print(trending_books[2]) %}"
+
+            </p>
+            <p  style = "color: #64c1fb;">
+                by {% print(trending_authors[2]) %}
+            </p>
+            <input type="checkbox" id="book2" name="book2" style="font-size: 15px; width: auto;" value="{{ trending_books[2]+ '+' + trending_urls[2]+ '+' + trending_authors[2]}}">
+            <label for="book2" style="color: white; font-size: larger;">Add This book?</label>
+        </div>
+  </div>
+  <center> <button style="font-size: 15px; width: auto;" type="submit">Add all to List?</button> </center>
+</div>
+  </form>
+
+  <div class="mainmessage 1">
+    <h2 class="font-weight-bolder" style="font-size: 30px; position: relative; padding-top: 5%; width: 125%;"> Lets begin your Reading Journey!</h2>
+    <p style="text-align: center;">Reading Buddies is a platform designed for book ethusiasts. We allow users to search for books based on topics such as Mystery to Love. Using this website you will be able to add books you are reading and which you want to read</p>
+  </div>
+  <div class="mainmessage 2">
+    <h2 class="font-weight-bolder" style="font-size: 30px; position: relative; padding-top: 5%; width: 125%; left: 125px;"> The Book List</h2>
+    <p style="text-align: center;">Our site provides a clean, sleek and modern way to keep track of your books. Our special MyBookList is a custom list of books you are currently reading. These books can be set to various statuses such as "Currently Reading" or "Waiting to Read"!</p>
+  </div>
+
+  <br>
+
+
+
+
+
+
+
+
+
+{% endblock %}
